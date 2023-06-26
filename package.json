@@ -7,8 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "nodemon ./public/app.js",
-    "server": "nodemon --quiet server.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "server": "nodemon server.js"
   },
   "keywords": [],
   "author": "Bao Tran",
@@ -21,6 +20,6 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.0",
-    "nodemon": "^1.14.9"
+    "nodemon": "^2.0.22"
   }
 }

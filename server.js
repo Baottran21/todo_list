@@ -3,8 +3,6 @@ import express from 'express';
 import dotenv from 'dotenv';
 import pkg from 'pg';
 import cors from 'cors';
-import { LogError } from 'concurrently';
-
 //NECESSARY MIDDLEWARE
 const app = express();
 app.use(express.json());
@@ -26,12 +24,20 @@ const pool = new Pool({
 // console.log(pool); //Connection Pool is working locally
 
 //GET ALL
-app.get('/todo', async (_, res) => {
+app.get('/todos', async (_, res) => {
   try {
-    const result = await pool.query('SELECT * FROM todos');
-    console.log(result, LogError);
-  } catch (error) {
-    console.log(error);
+    await pool.query(`SELECT * FROM todos`);
+    const sorted = await pool.query(`SELECT * FROM todos ORDER BY todo_id ASC`);
+    res
+      .status(200)
+      .setHeader('Content-Type', 'application/json')
+      .send(sorted.rows);
+  } catch (err) {
+    console.log(err);
+    res
+      .status(500)
+      .setHeader('Content-Type', 'application/json')
+      .send(`INTERNAL SERVER ERROR: ${err.message}`);
   }
 });
 //GET ONE
