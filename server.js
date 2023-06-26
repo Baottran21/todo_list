@@ -36,11 +36,35 @@ app.get('/todos', async (_, res) => {
     console.log(err);
     res
       .status(500)
-      .setHeader('Content-Type', 'application/json')
+      .setHeader('Content-Type', 'text/plain')
       .send(`INTERNAL SERVER ERROR: ${err.message}`);
   }
 });
 //GET ONE
+app.get('/todos/:id', async (req, res) => {
+  const id = req.params.id;
+  try {
+    const result = await pool.query(
+      `SELECT * FROM todos WHERE todo_id = ${id}`
+    );
+    if (result.rowCount === 0) {
+      res
+        .status(404)
+        .setHeader('Content-Type', 'text/plain')
+        .send('TASK NOT FOUND');
+      return;
+    }
+    res
+      .status(200)
+      .setHeader('Content-Type', 'application/json')
+      .send(result.rows[0]);
+  } catch (err) {
+    res
+      .status(500)
+      .setHeader('Content-Type', 'text/plain')
+      .send(`INTERNAL SERVER ERROR`);
+  }
+});
 //POST ONE
 //UPDATE ONE
 //DELETE ONE
