@@ -66,6 +66,23 @@ app.get('/todos/:id', async (req, res) => {
   }
 });
 //POST ONE
+app.post('/todos', async (req, res) => {
+  try {
+    const { todo } = req.body;
+    const result = await pool.query(
+      `INSERT INTO todos (todo) VALUES ('${todo}') RETURNING *;`
+    );
+    res
+      .status(201)
+      .setHeader('Content-Type', 'application/json')
+      .send(result.rows[0]);
+  } catch (error) {
+    res
+      .status(500)
+      .setHeader('Content-Type', 'text/plain')
+      .send(`INTERNAL SERVER ERROR`);
+  }
+});
 //UPDATE ONE
 //DELETE ONE
 
