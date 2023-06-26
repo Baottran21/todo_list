@@ -84,6 +84,31 @@ app.post('/todos', async (req, res) => {
   }
 });
 //UPDATE ONE
+app.patch('/todos/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { todo } = req.body;
+    const result = await pool.query(
+      `UPDATE todos SET todo = ('${todo}') WHERE todo_id = ${id}`
+    );
+    if (result.rowcount === 0) {
+      res
+        .status(404)
+        .setHeader('Content-Type', 'text/plain')
+        .send('TASK NOT FOUND');
+      return;
+    }
+    res
+      .status(201)
+      .setHeader('Content-Type', 'application/json')
+      .send(`Changed Task successfully}`);
+  } catch (error) {
+    res
+      .status(500)
+      .setHeader('Content-Type', 'text/plain')
+      .send(`INTERNAL SERVER ERROR`);
+  }
+});
 //DELETE ONE
 
 //LISTENING ON PORT
