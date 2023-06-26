@@ -40,3 +40,6 @@ app.get('/todo', async (_, res) => {
 //DELETE ONE
 
 //LISTENING ON PORT
+app.listen(process.env.PORT, () => {
+  console.log(`Listening on Port ${process.env.PORT}`);
+});

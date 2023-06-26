@@ -6,7 +6,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "node ./public/app.js",
+    "client": "nodemon ./public/app.js",
     "server": "nodemon --quiet server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
