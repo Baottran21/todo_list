@@ -1,7 +1,7 @@
 const url = `https://buildatodo.onrender.com`;
 
 window.addEventListener('load', async () => {
-  await getAll;
+  await getAll();
 });
 
 //GET ALL
