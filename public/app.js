@@ -8,7 +8,7 @@ window.addEventListener('load', async () => {
 const getAll = async () => {
   try {
     const response = await fetch(`$url/todos`);
-    const data = response.json();
+    const data = await response.json();
     console.log(data);
   } catch (error) {
     console.log(error);
