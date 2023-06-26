@@ -7,7 +7,7 @@ window.addEventListener('load', () => {
 //GET ALL
 async function getAll() {
   try {
-    const response = await fetch(`$url/todos`, {
+    const response = await fetch(`${url}/todos`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
       mode: 'no-cors',
