@@ -14,7 +14,6 @@ app.use(
 
 dotenv.config();
 const databaseURL = process.env.DATABASE_URL;
-// const url = 'https://corsproxy.io/?' + encodeURIComponent('https://api.domain.com/...');
 
 const { Pool } = pkg;
 const pool = new Pool({
