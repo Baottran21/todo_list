@@ -32,12 +32,12 @@ app.get('/todos', async (_, res) => {
       .status(200)
       .setHeader('Content-Type', 'application/json')
       .send(sorted.rows);
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error.message);
     res
       .status(500)
       .setHeader('Content-Type', 'text/plain')
-      .send(`INTERNAL SERVER ERROR: ${err.message}`);
+      .send(`INTERNAL SERVER ERROR`);
   }
 });
 //GET ONE
@@ -58,7 +58,7 @@ app.get('/todos/:id', async (req, res) => {
       .status(200)
       .setHeader('Content-Type', 'application/json')
       .send(result.rows[0]);
-  } catch (err) {
+  } catch (error) {
     res
       .status(500)
       .setHeader('Content-Type', 'text/plain')
