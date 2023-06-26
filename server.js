@@ -13,14 +13,13 @@ app.use(
 );
 app.use(express.static('public'));
 dotenv.config();
-const databaseURL = process.env.DATABASE_URL;
+// const databaseURL = process.env.DATABASE_URL;
 
 const { Pool } = pkg;
 const pool = new Pool({
-  connectionString: databaseURL,
+  connectionString: process.env.DATABASE_URL,
 });
-
-// console.log(pool); //Connection Pool is working locally
+console.log(pool); //Connection Pool is working locally
 
 //GET ALL
 app.get('/todos', async (_, res) => {
