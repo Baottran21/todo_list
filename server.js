@@ -11,7 +11,7 @@ app.use(
     origin: '*',
   })
 );
-
+app.use(express.static('public'));
 dotenv.config();
 const databaseURL = process.env.DATABASE_URL;
 
