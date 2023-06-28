@@ -19,7 +19,7 @@ const { Pool } = pkg;
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
-console.log(pool); //Connection Pool is working locally
+// console.log(pool); //Connection Pool is working locally
 
 //GET ALL
 app.get('/todos', async (_, res) => {

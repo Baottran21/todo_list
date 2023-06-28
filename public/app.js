@@ -1,4 +1,5 @@
 const url = `https://buildatodo.onrender.com`;
+const taskContainer = document.querySelector('#task-container');
 
 window.addEventListener('load', () => {
   getAll();
@@ -13,7 +14,9 @@ async function getAll() {
       mode: 'no-cors',
     });
     const data = await response.json();
-    console.log(data);
+    const ul = document.createElement('ul');
+    taskContainer.appendChild(ul);
+    console.log(taskContainer.firstChild.childNodes);
   } catch (error) {
     console.log(error);
   }
