@@ -19,7 +19,7 @@ async function getAll() {
     for (let task of data) {
       console.log(task);
       const li = document.createElement('li');
-      li.textContent(task);
+      li.textContent(task.todo);
       ul.appendChild(li);
     }
   } catch (error) {
