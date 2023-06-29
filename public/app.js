@@ -16,7 +16,12 @@ async function getAll() {
     const data = await response.json();
     const ul = document.createElement('ul');
     taskContainer.appendChild(ul);
-    console.log(taskContainer.firstChild.childNodes);
+    for (let task of data) {
+      console.log(task);
+      const li = document.createElement('li');
+      li.textContent(task);
+      ul.appendChild(li);
+    }
   } catch (error) {
     console.log(error);
   }
