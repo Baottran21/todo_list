@@ -3,8 +3,8 @@ const landingContainer = document.querySelector(`#landing-container`);
 const taskContainer = document.querySelector('#task-container');
 
 window.addEventListener('load', () => {
-  getAll();
   createHeader();
+  getAll();
   createFooter();
 });
 
@@ -22,7 +22,7 @@ function createFooter() {
   const footerText = document.createElement('h2');
   landingContainer.appendChild(footer);
   footerText.textContent = 'CopyRights @ Bao Tran';
-  header.appendChild(footerText);
+  footer.appendChild(footerText);
 }
 
 //GET ALL
