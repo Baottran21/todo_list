@@ -1,0 +1,28 @@
+* {
+  margin: 0 auto;
+}
+
+#landing-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  width: 100dvw;
+  height: 10dvh;
+}
+
+#main-container {
+  width: 100dvw;
+  height: 80dvh;
+  display: flex;
+}
+
+#main-container ul {
+  list-style: none;
+}
+
+footer {
+  width: 100dvw;
+  height: 10dvh;
+}
